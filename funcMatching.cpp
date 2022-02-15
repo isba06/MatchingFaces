@@ -2,9 +2,6 @@
 #include <dlib/matrix.h>
 #include <vector>
 #include <boost/algorithm/string.hpp>
-using namespace dlib;
-using namespace std;
-using namespace boost;
 
 struct Person {
     std::string id;
@@ -26,7 +23,7 @@ float ColumnMatrix_EuclideanDistance(dlib::matrix<float> DB_EncodingFaceMatrix, 
 int main()
 {
     setlocale(LC_CTYPE, "");
-    ifstream in("C:\\Users\\wwwis\\Desktop\\Job\\2rus_face_bd.txt", ios::in);
+    std::ifstream in("C:\\Users\\wwwis\\Desktop\\Job\\2rus_face_bd.txt", ios::in);
 
     if (!in.is_open()) {
         std::cout << "DB file is not open";
@@ -59,7 +56,7 @@ int main()
     for (long col = 0; col < personBD.size(); col++) {
         dlib::set_colm(faceEncodingMatrix, col) = personBD[col].encoding;
     }
-    ifstream F("C:\\Users\\wwwis\\Desktop\\Job\\test.txt", ios::in);
+    std::ifstream F("C:\\Users\\wwwis\\Desktop\\Job\\test.txt", ios::in);
     dlib::matrix<float, 128, 1> encodingFace;
 
     if (!in.is_open()) {
@@ -72,7 +69,7 @@ int main()
         F >> encodingFace(i++);
     }
     std::cout << faceEncodingMatrix << std::endl;
-    cout << personBD[ColumnMatrix_EuclideanDistance(faceEncodingMatrix, encodingFace)].id << endl;
-    cout << personBD[ColumnMatrix_EuclideanDistance(faceEncodingMatrix, encodingFace)].name << endl;
+    std::cout << personBD[ColumnMatrix_EuclideanDistance(faceEncodingMatrix, encodingFace)].id << std::endl;
+    std::cout << personBD[ColumnMatrix_EuclideanDistance(faceEncodingMatrix, encodingFace)].name << std::endl;
     return 0;
 }
